@@ -1,0 +1,86 @@
+print("""\t𝙏𝙝𝙞𝙨 𝙞𝙨 𝙢𝙮 𝙫𝙚𝙣𝙙𝙞𝙣𝙜 𝙢𝙖𝙘𝙝𝙞𝙣𝙚\n   """)
+
+#STEP 1: Create a menu using a list of dictionaries
+print("----------------DRINKS----------------")
+Drinks = [
+    {"Item Name": "Water", "Item no.": 1, "Price": "$2"},
+    {"Item Name": "Coffee", "Item no.": 2, "Price": "$9"},
+    {"Item Name": "Hot Chocolate", "Item no.": 3, "Price": "$9"},
+    {"Item Name": "Iced Tea", "Item no.": 4, "Price": "$10"},
+    {"Item Name": "Soda", "Item no.": 5, "Price": "$5"}
+]
+#STEP 2: Displaying the menu using for loop
+for drink in Drinks:
+    print(f"{drink['Item no.']}. {drink['Item Name']}  -  {drink['Price']}")
+
+print("------------------------------------")
+
+
+print("----------------SNACKS----------------")
+Snacks =  [
+    {"Item Name": "Chips", "Item no.": 6, "Price": "$7"},
+    {"Item Name": "Popcorn", "Item no.": 7, "Price": "$15"},
+    {"Item Name": "Biscuits", "Item no.": 8, "Price": "$6"},
+    {"Item Name": "Lollipop", "Item no.": 9, "Price": "$2"},
+    {"Item Name": "Chocolate Bar", "Item no.": 10, "Price": "$5"}
+]
+for snack in Snacks:
+    print(f"{snack['Item no.']}. {snack['Item Name']}  -  {snack['Price']}")
+
+print("------------------------------------")
+
+#STEP 3: Create a dictionary of item names and prices
+item_names = {
+    1: 'Water', 2: 'Coffee', 3: 'Hot Chocolate', 4: 'Iced Tea', 5: 'Soda',
+    6: 'Chips', 7: 'Popcorn', 8: 'Biscuits', 9: 'Lollipop', 10: 'Chocolate Bar'
+}
+
+item_prices = {
+    1: 2, 2: 9, 3: 9, 4: 10, 5: 5,
+    6: 7, 7: 15, 8: 6, 9: 2, 10: 5
+}
+
+#STEP 4: Using while loop to continue the program
+while True:
+    
+    #STEP 5: Allowing user to enter an item code using int function
+    print("Enter an item code to continue or 0 to exit:")
+    userCode = int(input())
+    
+    #STEP 6: Using control structure and break statement to end program
+    if userCode == 0:
+        print("Thank you for using the vending machine. Goodbye!")
+        break
+    
+    #STEP 7: Checking if code entered is present in dictionary, then retriving the name and price
+    if userCode in item_prices:                  #Using if statement to check code is present in dictionary
+        item_name = item_names[userCode]         #Retriving item name
+        item_price = item_prices[userCode]       #Retriving item price
+        print(f"The selected item is {item_name}.It costs ${item_price}.\n")     #Displaying the name and price using print function
+        
+        #STEP 8: Using while loop to manage money and provide correct change
+        while True:
+            
+            #STEP 9: Allowing user to input any amount using float function
+            print("Enter the amount you are paying:\n")
+            user_payment = float(input())
+            
+            #STEP 10: Using if statement to check if amount paid is less than item price
+            if user_payment < item_price:
+                print("Insufficient amount. Please pay the full price.\n")
+            #STEP 11: If the above condition is false, using else statement to provide correct change    
+            else:
+                #Creating a variable change: which calculates the difference between amount
+                #paid and the price, and using the round(...,2) function which round 
+                #the calculated change to two decimal places
+                change = round(user_payment - item_price, 2)  
+                print(f"Thank you for your payment. Your change is ${change}.\n")
+                break
+    #STEP 12: Using else statement in case an invalid code is entered.        
+    else:
+        print("Invalid item code. Please try again.\n")
+
+
+
+
+
